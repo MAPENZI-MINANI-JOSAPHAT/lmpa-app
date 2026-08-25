@@ -15,7 +15,11 @@ st.set_page_config(
 )
 
 st.markdown("""
-    <style>
+    
+<link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/MAPENZI-MINANI-JOSAPHAT/lmpa-app/main/assets/logo.jpg">
+<link rel="icon" type="image/jpeg" sizes="192x192" href="https://raw.githubusercontent.com/MAPENZI-MINANI-JOSAPHAT/lmpa-app/main/assets/logo.jpg">
+<link rel="shortcut icon" href="https://raw.githubusercontent.com/MAPENZI-MINANI-JOSAPHAT/lmpa-app/main/assets/logo.jpg">
+<style>
     #MainMenu, footer, header {visibility: hidden;}
     
     .academic-card {
