@@ -7,18 +7,14 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 # 1. PAGE CONFIGURATION & STYLING
-st.set_page_config(
-    page_title="LMPA Quantitative Observatory | Bukavu",
-    page_icon="assets/logo.jpg",
+ st.set_page_config(
+    page_title="LMPA Observatory",
+    page_icon="https://raw.githubusercontent.com/MAPENZI-MINANI-JOSAPHAT/lmpa-app/main/assets/logo.jpg",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
 st.markdown("""
-    
-<link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/MAPENZI-MINANI-JOSAPHAT/lmpa-app/main/assets/logo.jpg">
-<link rel="icon" type="image/jpeg" sizes="192x192" href="https://raw.githubusercontent.com/MAPENZI-MINANI-JOSAPHAT/lmpa-app/main/assets/logo.jpg">
-<link rel="shortcut icon" href="https://raw.githubusercontent.com/MAPENZI-MINANI-JOSAPHAT/lmpa-app/main/assets/logo.jpg">
 <style>
     #MainMenu, footer, header {visibility: hidden;}
     
