@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMPA Observatory | Bukavu</title>
+    
+    <!-- PWA Config -->
+    <link rel="manifest" href="/assets/manifest.json">
+    <meta name="theme-color" content="#0284C7">
+    <link rel="apple-touch-icon" href="/assets/logo.jpg">
+    <link rel="icon" type="image/jpeg" href="/assets/logo.jpg">
+
+    <!-- Tailwind CSS & Plotly -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body class="bg-slate-900 text-white min-h-screen p-4">
+    
+    <!-- En-tête -->
+    <div class="flex items-center gap-4 mb-6 border-b border-slate-700 pb-4">
+        <img src="/assets/logo.jpg" class="w-16 h-16 rounded-full border-2 border-sky-500" alt="Logo">
+        <div>
+            <h1 class="text-2xl font-bold text-sky-400">LMPA Observatory</h1>
+            <p class="text-xs text-slate-400">Quantitative Research Platform | Bukavu</p>
+        </div>
+    </div>
+
+    <!-- Carte d'information -->
+    <div class="bg-slate-800 border-l-4 border-sky-500 p-4 rounded-r-lg mb-6">
+        <h4 class="font-bold text-sky-400">Local Market Price Analytics</h4>
+        <p class="text-sm text-slate-300">Modélisation empirique de l'intégration spatiale des marchés de Bukavu (Kadutu, Nyawera, Feu Vert).</p>
+    </div>
+
+    <!-- Section Produits -->
+    <h3 class="font-bold text-lg mb-3 text-slate-200">Denrées Sous Observation</h3>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+        <div class="bg-slate-800 p-2 rounded text-center">
+            <img src="/assets/maize_flour.jpg" class="h-24 w-full object-cover rounded mb-2" onerror="this.src='https://via.placeholder.com/150'">
+            <span class="text-xs font-semibold">Farine de Maïs</span>
+        </div>
+        <div class="bg-slate-800 p-2 rounded text-center">
+            <img src="/assets/rice.jpg" class="h-24 w-full object-cover rounded mb-2" onerror="this.src='https://via.placeholder.com/150'">
+            <span class="text-xs font-semibold">Riz Importé</span>
+        </div>
+        <div class="bg-slate-800 p-2 rounded text-center">
+            <img src="/assets/red_beans.jpg" class="h-24 w-full object-cover rounded mb-2" onerror="this.src='https://via.placeholder.com/150'">
+            <span class="text-xs font-semibold">Haricots Rouges</span>
+        </div>
+        <div class="bg-slate-800 p-2 rounded text-center">
+            <img src="/assets/vegetable_oil.jpg" class="h-24 w-full object-cover rounded mb-2" onerror="this.src='https://via.placeholder.com/150'">
+            <span class="text-xs font-semibold">Huile Végétale</span>
+        </div>
+    </div>
+
+    <!-- Graphique -->
+    <div class="bg-slate-800 p-4 rounded-lg shadow-lg">
+        <h3 class="font-bold text-slate-200 mb-2">Séries Temporelles des Prix (CDF)</h3>
+        <div id="priceChart" class="w-full h-80"></div>
+    </div>
+
+    <script>
+        const trace1 = {
+            x: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Août'],
+            y: [32000, 32500, 33100, 34000, 34800, 35200, 36000, 36500],
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: 'Kadutu',
+            line: {color: '#0284C7'}
+        };
+
+        const trace2 = {
+            x: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Août'],
+            y: [33500, 34000, 34600, 35500, 36200, 36800, 37500, 38100],
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: 'Nyawera',
+            line: {color: '#F59E0B'}
+        };
+
+        const layout = {
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            font: {color: '#94A3B8'},
+            margin: {t: 10, b: 30, l: 40, r: 10},
+            legend: {orientation: 'h', y: 1.1}
+        };
+
+        Plotly.newPlot('priceChart', [trace1, trace2], layout, {responsive: true});
+    </script>
+</body>
+</html>
