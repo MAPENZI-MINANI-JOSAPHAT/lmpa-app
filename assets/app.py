@@ -5,14 +5,55 @@ import os
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-
+import streamlit.components.v1 as components
 # 1. PAGE CONFIGURATION & STYLING
- st.set_page_config(
+  st.set_page_config(
     page_title="LMPA Observatory",
     page_icon="https://raw.githubusercontent.com/MAPENZI-MINANI-JOSAPHAT/lmpa-app/main/assets/logo.jpg",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
+
+# Injection JavaScript pour forcer le logo PWA sur Android
+components.html("""
+<script>
+    const linkIcon = parent.document.createElement('link');
+    linkIcon.rel = 'apple-touch-icon';
+    linkIcon.href = 'https://raw.githubusercontent.com/MAPENZI-MINANI-JOSAPHAT/lmpa-app/main/assets/logo.jpg';
+    parent.document.getElementsByTagName('head')[0].appendChild(linkIcon);
+
+    const manifestData = {
+        "name": "LMPA Observatory",
+        "short_name": "LMPA",
+        "start_url": "/",
+        "display": "standalone",
+        "background_color": "#ffffff",
+        "theme_color": "#000000",
+        "icons": [
+            {
+                "src": "https://raw.githubusercontent.com/MAPENZI-MINANI-JOSAPHAT/lmpa-app/main/assets/logo.jpg",
+                "sizes": "192x192",
+                "type": "image/jpeg",
+                "purpose": "any maskable"
+            },
+            {
+                "src": "https://raw.githubusercontent.com/MAPENZI-MINANI-JOSAPHAT/lmpa-app/main/assets/logo.jpg",
+                "sizes": "512x512",
+                "type": "image/jpeg"
+            }
+        ]
+    };
+
+    const stringManifest = JSON.stringify(manifestData);
+    const blob = new Blob([stringManifest], {type: 'application/json'});
+    const manifestURL = URL.createObjectURL(blob);
+
+    const linkManifest = parent.document.createElement('link');
+    linkManifest.rel = 'manifest';
+    linkManifest.href = manifestURL;
+    parent.document.getElementsByTagName('head')[0].appendChild(linkManifest);
+</script>
+""", height=0)
 
 st.markdown("""
 <style>
